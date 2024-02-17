@@ -1,0 +1,57 @@
+{
+    "runArgs": [
+        "-p=3782:3782",
+        "--name", "dn_myriad_src"
+    ],
+    "name": ".NET 8",
+    "build": {
+        "dockerfile": "./Dockerfile",
+        "context": "."
+    },    
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {
+            "version": "2"
+        },                
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": "true",
+            "username": "vscode",
+            "userUid": "1000",
+            "userGid": "1000",
+            "upgradePackages": "true"
+        },
+        "ghcr.io/devcontainers/features/dotnet:2": {
+            "version": "none",
+            "dotnetRuntimeVersions": "7.0",
+            "aspNetCoreRuntimeVersions": "7.0"
+        }
+    },
+    
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "GitHub.copilot",
+                "GitHub.vscode-github-actions",
+                "ms-dotnettools.vscode-dotnet-runtime",
+                "ms-dotnettools.csdevkit",
+                "ms-dotnetools.csharp",
+                "Ionide.Ionide-fsharp"
+            ]
+        }
+    },
+    "forwardPorts": [3782],    
+    "hostRequirements": {
+        "memory": "8gb",
+        "cpus": 4
+    },
+    "remoteEnv": {
+        "DOTNET_MULTILEVEL_LOOKUP": "0",
+        "TARGET": "net8.0"
+    },    
+    "mounts": [
+        "source=rust-pg-xino-shared,target=/shared_vol,type=volume"
+    ],
+    "remoteUser": "vscode",
+    "postStartCommand": "sudo /startup/startup.sh",
+    "postCreateCommand": "sudo chown vscode /shared_vol"
+}
