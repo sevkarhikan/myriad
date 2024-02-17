@@ -279,3 +279,5 @@ Here is a list of external plugins that have been built
 [SqlHyra](https://github.com/JordanMarr/SqlHydra)
 [JsonWrapper](https://github.com/BinaryDefense/JsonWrapper)
 [TypeSafeInternals](https://github.com/TheAngryByrd/TypeSafeInternals)
+
+(testing git access?)
